@@ -14,35 +14,36 @@ class AppState extends EventEmitter {
   /** @type {import('./Models/Car').Car} */
   car = null
 
-  house = null
+  houses = loadState('houses', [House])
 
 
-  // house = [
-  //   new House(
-  //     {
-  //       name: 'Test House',
-  //       year: 2013,
-  //       bedrooms: 2,
-  //       bathrooms: 3,
-  //       sqft: 2130,
-  //       price: 200000,
-  //       description: 'A lovely test home that I love and have a lot of time and love for I love this omg wowzas!',
-  //       imgUrl: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80'
-  //     }
-  //   ),
-  //   new House(
-  //     {
-  //       name: 'Sample House',
-  //       year: 2130,
-  //       bedrooms: 1,
-  //       bathrooms: 1,
-  //       sqft: 100,
-  //       price: 5,
-  //       description: 'A proper house sampler, it\'s got everything you need I promise',
-  //       imgUrl: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2873&q=80'
-  //     }
-  //   )
-  // ]
+
+ house = [
+   new House(
+      {
+        name: 'Test House',
+       year: 2013,
+       bedrooms: 2,
+       bathrooms: 3,
+       sqft: 2130,
+       price: 200000,
+       description: 'A lovely test home that I love and have a lot of time and love for I love this omg wowzas!',
+        imgUrl: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80'
+     }
+   ),
+   new House(
+      {
+       name: 'Sample House',
+       year: 2130,
+       bedrooms: 1,
+       bathrooms: 1,
+       sqft: 100,
+       price: 5,
+       description: 'A proper house sampler, it\'s got everything you need I promise',
+       imgUrl: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2873&q=80'
+       }
+     )
+   ]
 }
 
 export const appState = new Proxy(new AppState(), {

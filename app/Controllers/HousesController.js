@@ -16,11 +16,13 @@ function _drawHouse (){
 }
 export class HousesController {
 
-
   constructor() {
     console.log('Hello this is the houses Controller and I am surely working')
     console.log(appState.house);
+    appState.on('houses', _drawHouses)
+    appState.on('house', _drawHouse)
   }
+
 
   show(){
     console.log('TODO houses')
@@ -28,12 +30,29 @@ export class HousesController {
   }
 
   
-  setHouse(houseId) {
+  setActiveHouse(houseId) {
     try {
-      housesService.setHouse(houseId)
+      housesService.setActiveHouse(houseId)
       console.log('muh');
     } catch (error) {
       Pop.error(error)
     }
   }
+
+  handleFormSubmit() {
+    try {
+      event.preventDefault()
+      const form = event.target
+      const formData = getFormData(form)
+
+      housesService.createHouse(formData)
+
+      console.log(formData)
+      // @ts-ignore
+      form.reset()
+    } catch (error) {
+      Pop.error(error)
+    }
+  }
+
 }

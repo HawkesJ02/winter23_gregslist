@@ -3,13 +3,19 @@ import { House } from "../Models/House.js"
 import { saveState } from "../Utils/Store.js"
 
 class HousesService {
+  createHouse(formData) {
+    let house = new House(formData)
+    appState.houses.push(house)
+    appState.emit('houses')
+    saveState('houses', appState.houses)
+  }
 
   setActiveHouse(houseId){
     const house = appState.house.find(h => h.id == houseId)
     if (!house) {
-      throw new Error ('There is no darn house with thta ID buckaroo')
+      throw new Error ('There is no darn house with that ID buckaroo')
     }
-    appState.house = house
+    console.log(house);
   }
 
   setActiveCar(carId) {
